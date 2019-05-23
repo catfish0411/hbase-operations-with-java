@@ -37,7 +37,28 @@ public class HBasePutTest {
     @Test
     public void testCreateTable()  {
         try {
-            HBaseUtil.createTable("logs", new String[]{"events"}, true);
+            HBaseUtil.createTable("logs2", new String[]{"events"}, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testAddData()  {
+        try {
+            Put put = new Put(Bytes.toBytes("rowKey"));
+            put.addColumn(Bytes.toBytes("events"), Bytes.toBytes("severity"), Bytes.toBytes(new Random().nextInt(10)+""));
+
+            HBaseUtil.put("logs",put);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testDeleteTable()  {
+        try {
+            HBaseUtil.deleteTable("logs2");
         } catch (Exception e) {
             e.printStackTrace();
         }
