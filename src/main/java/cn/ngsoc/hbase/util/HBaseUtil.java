@@ -48,8 +48,9 @@ public class HBaseUtil {
 			if (conf == null) {
 				conf = HBaseConfiguration.create();
 //                conf.set("hbase.zookeeper.property.clientPort", ConfigUtil.getInstance().getConfigVal("zkport", ConstantProperties.COMMON_PROP));
-				conf.set("hbase.zookeeper.quorum", zkHost);
-				conf.set("zookeeper.znode.parent", "/hbase");
+				//conf.set("hbase.zookeeper.quorum", zkHost);
+				//conf.set("zookeeper.znode.parent", "/hbase");
+				conf.set("hbase.rootdir","hdfs://localhost:9000/hbase");
 			}
 		} catch (Exception e) {
 			logger.error("HBase Configuration Initialization failure !");

@@ -1,5 +1,7 @@
 package cn.ngsoc.hbase.util;
 
+import org.apache.hadoop.hbase.client.Put;
+
 import java.util.List;
 
 /**
@@ -8,9 +10,9 @@ import java.util.List;
 public class MyTaskRun implements Runnable {
 
     private String tablename;
-    private List<SocPut> puts;
+    private List<Put> puts;
 
-    public MyTaskRun(String tablename, List<SocPut> puts) {
+    public MyTaskRun(String tablename, List<Put> puts) {
         this.tablename = tablename;
         this.puts = puts;
     }
